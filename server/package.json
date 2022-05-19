@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Expenses tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yashita-Khurana/expense-tracker.git"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "YashitaGurleen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yashita-Khurana/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/Yashita-Khurana/expense-tracker#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
