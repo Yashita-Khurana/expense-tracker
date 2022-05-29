@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt=require('bcryptjs');
 
 //create schema
 const userSchema = new mongoose.Schema(
@@ -31,7 +32,20 @@ const userSchema = new mongoose.Schema(
         timestamps: true,
       }
     );
-
+  //hash password
+  //before a user is saved
+  userSchema.pre('save', async function(next){
+    //when user is update
+    if(!this.isModified('password')){
+      next();
+    }
+    //salt is a way of hashing user passwords
+      const salt=await bcrypt.genSalt(10);
+      //this represents the instance  of the user
+      this.password=await bcrypt.hash(this.password,salt);
+      next();
+    });
+    
 
     //Compile schema into model
 const User = mongoose.model("User", userSchema);

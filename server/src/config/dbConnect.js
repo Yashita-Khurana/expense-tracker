@@ -1,5 +1,6 @@
 // require the library
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 
 
 //lprArypKGVp4DN0c
@@ -10,7 +11,7 @@ const mongoose = require('mongoose')
 const dbConnect = async () => {
     try {
         //connect to the database
-      await mongoose.connect("mongodb+srv://Yashita:lprArypKGVp4DN0c@cluster0.mn1pf.mongodb.net/?retryWrites=true&w=majority", {
+      await mongoose.connect(process.env.MONGO_URL, {
         // useCreateIndex: true,
         // useFindAndModify: false,
         useUnifiedTopology: true,
@@ -21,5 +22,6 @@ const dbConnect = async () => {
       console.log(`Error ${error.message}`);
     }
   };
+
   
   module.exports = dbConnect;
