@@ -22,6 +22,10 @@ dbConnect();
 //middlewares
 app.use(express.json());
 
+app.get('/',(req,res) => {
+    res.json({msg:"welcome"});
+})
+
 //routes
 app.use('/api/users',userRoute);
 
