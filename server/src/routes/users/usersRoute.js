@@ -9,12 +9,13 @@ const express = require("express");
 //   fetchUserDetailsCtrl,
 // } = require("../../controllers/users/usersCtrl");
 
-const { registerUser, fetchUsersCtrl } = require("../../controllers/users/usersCtrl");
+const { registerUser, fetchUsersCtrl ,loginUserCtrl} = require("../../controllers/users/usersCtrl");
 // const authMiddleware = require("../../middlewares/auth/authMiddleware");
 
 const userRoute = express.Router();
 
 userRoute.post("/register", registerUser);
+userRoute.post("/login", loginUserCtrl);
 userRoute.get('/',fetchUsersCtrl);
 // userRoutes.post("/login", loginUserCtrl);
 
