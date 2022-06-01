@@ -3,11 +3,12 @@ const express = require('express');
 
 //requiring the registerUser function from userCtrl.js to pass in the post req.
 const {registerUser} = require('./controllers/users/usersCtrl');
-const errorHandler = require("./middlewares/errorMiddleware");
+const {errorHandler,notFound} = require("./middlewares/errorMiddleware");
 const userRoute = require('./routes/users/usersRoute');
 const dotenv=require("dotenv");
 //importing the database into the server
 const dbConnect = require('./config/dbConnect');
+const incomeRoute = require('./routes/income/incomeRoute');
 
 // using express
 const app = express();
@@ -26,11 +27,17 @@ app.get('/',(req,res) => {
     res.json({msg:"welcome"});
 })
 
-//routes
+//users routes
 app.use('/api/users',userRoute);
 
+
+//income routes
+app.use('/api/income',incomeRoute);
+
 //error
+app.use(notFound);
 app.use(errorHandler);
+
 
 module.exports=app;
 
